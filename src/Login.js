@@ -16,7 +16,7 @@ const Login = (props) => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:8000/auth/login/',{
+            const response = await fetch(`${process.env.REACT_APP_API_URL}auth/login/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': "application/json",

@@ -7,10 +7,10 @@ const Signup = (props) => {
     const [password, setPassWord] = useState('');
     const [message,setMessage] = useState('');
 
-    const handleSubmitSuccess = async (event) =>{
+    const handleSubmit = async (event) =>{
         event.preventDefault();
         try{
-            const response = await fetch('http://127.0.0.1:8000/auth/signup/',{
+            const response = await fetch(`${process.env.REACT_APP_API_URL}auth/signup/`, {
             method: 'post',
             headers: {
                 'content-type': 'application/json',
@@ -25,6 +25,8 @@ const Signup = (props) => {
             setUserName('');
             setEmail('');
             setPassWord('');
+
+            onSubmitSuccess();
         }
 
         else{
@@ -36,7 +38,7 @@ const Signup = (props) => {
         }
         //perform signup logic (e.g  API call)
         // if signup is successful:
-        onSubmitSuccess();
+        
         // call the function passed from the authpage or main app 
 
     }
@@ -47,7 +49,7 @@ const Signup = (props) => {
 
   return (
     <div>
-        <form onSubmit={handleSubmitSuccess}>
+        <form onSubmit={handleSubmit}>
         
         
         

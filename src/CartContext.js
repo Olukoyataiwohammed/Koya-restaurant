@@ -5,7 +5,7 @@ import { useAuth } from "./AuthContext";
 const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export const CartProvider = ({ children }) => {
   const { token } = useAuth(); 
@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     };
 
-    const res = await fetch(`${API_BASE_URL}/cart/get-items/`, {
+    const res = await fetch(`${API_BASE_URL}cart/get-items/`, {
       method: "GET",
       headers,
       credentials: "include",
@@ -53,7 +53,7 @@ export const CartProvider = ({ children }) => {
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         };
 
-        const res = await fetch(`${API_BASE_URL}/cart/add-items/`, {
+        const res = await fetch(`${API_BASE_URL}cart/add-items/`, {
           method: "POST",
           headers,
           credentials: "include",
@@ -84,7 +84,7 @@ export const CartProvider = ({ children }) => {
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         };
 
-        const res = await fetch(`${API_BASE_URL}/cart/delete-item/${itemId}/`, {
+        const res = await fetch(`${API_BASE_URL}cart/delete-item/${itemId}/`, {
           method: "DELETE",
           headers,
           credentials: "include",
@@ -120,7 +120,7 @@ export const CartProvider = ({ children }) => {
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       };
 
-      const res = await fetch(`${API_BASE_URL}/orders/create/`, {
+      const res = await fetch(`${API_BASE_URL}orders/create/`, {
         method: "POST",
         headers,
         credentials: "include",

@@ -60,19 +60,14 @@ export default function OrderButton({ form }) {
         setLoading(false);
 
         const handler = window.PaystackPop.setup({
-          key: "pk_test_0c95805407498620ce8b9d51b011b604570938e4", //  replace with your Paystack PUBLIC key
-          email: "customer@koyadishes.com", // later: real customer email
-          amount: order.total_price * 100, // Paystack uses kobo
+          key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
+          email: form.customer_email || "guest@koya.com",
+          amount: order.total_price * 100,
           currency: "NGN",
           reference: `ORDER_${order.id}_${Date.now()}`,
 
           callback: function (response) {
-            // ✅ Payment successful
             setStatus("Payment successful");
-
-            // TODO: send reference to backend for verification
-            // fetch("/orders/payments/webhook/", { ... })
-
             clearCart();
             navigate("/orders", { state: { orderId: order.id } });
           },

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
 import { useLocation } from "react-router-dom";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export default function Orders() {
   const { token } = useAuth();
@@ -13,8 +13,8 @@ export default function Orders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        let url = `${API_BASE_URL}/orders/`;
-        if (orderId) url = `${API_BASE_URL}/orders/${orderId}/`; // single order
+        let url = `${API_BASE_URL}orders/`;
+        if (orderId) url = `${API_BASE_URL}orders/${orderId}/`; // single order
 
         const headers = {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function Orders() {
 
           <h5>Items:</h5>
           <ul>
-            {order.items.map(item => (
+            {order.items?.map(item => (
               <li key={item.id}>
                 {item.item_name} x {item.quantity} - ₦{(item.item_price * item.quantity).toFixed(2)}
               </li>

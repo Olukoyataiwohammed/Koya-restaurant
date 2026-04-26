@@ -26,8 +26,8 @@ const Menu = () => {
         const categoryNames = await fetchCategories();
         setCategories(categoryNames);
         console.log('categories:',categoryNames)
-        if (categoryNames.length > 0){
-          //setSelectedCategory(categoryNames[0].id);
+        if (categoryNames.length > 0) {
+          setSelectedCategory(Number(categoryNames[0].id));
         }
        
       }
@@ -49,7 +49,7 @@ const Menu = () => {
       setIsLoading(true);
       
       try {
-        const items = await fetchMenuItems( selectedCategory);
+        const items = await fetchMenuItems(selectedCategory);
         setMenuItems(items);
         
         console.log("showing menu Items:",items);
