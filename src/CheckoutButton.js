@@ -3,9 +3,9 @@ import { useAuth } from "./AuthContext";
 
 export default function CheckoutButton({ showGuestFormInline = false }) {
   const navigate = useNavigate();
-  const { user } = useAuth();
 
-  // Cart page behavior → navigate only
+  useAuth(); // keep hook ONLY if you actually need auth state
+
   if (!showGuestFormInline) {
     return (
       <button onClick={() => navigate("/checkout")}>
@@ -14,6 +14,5 @@ export default function CheckoutButton({ showGuestFormInline = false }) {
     );
   }
 
-  // Checkout page behavior → form shown there
   return null;
 }
