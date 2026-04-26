@@ -38,10 +38,10 @@ const Menu = () => {
     };
 
     getMenu();
-  }, []); // The empty array ensures this runs only once when the component mounts
+  }, []); 
 
   useEffect(()=>{
-    if(!selectedCategory) return; //wait until a category is selected/defaulted
+    if(!selectedCategory) return; 
 
     const loadMenuItems = async ()=>{
       
@@ -68,25 +68,25 @@ const Menu = () => {
   }, [ selectedCategory]);
 
 
-  // 👉 Scroll ONLY after menuItems finish loading AND category is selected
+  
   useEffect(() => {
     if (!selectedCategory) return;
-    if (menuItems.length === 0) return; // wait until items exist
+    if (menuItems.length === 0) return; 
 
     const section = document.getElementById("items_section");
     
-    // small delay ensures DOM is painted before scroll
+   
     setTimeout(() => {
       if (section) section.scrollIntoView({ behavior: "smooth" });
     }, 150);
   }, [selectedCategory, menuItems]);
 
 
-   //Dependency array causes re-fetch on category change
+  
    if (isLoading) return <div>Loading....</div>;
    if (error) return <div>Error: {error}</div>;
 
-  // Handler for category button clicks
+  
   const handleButtonClick = (categoryName) =>{
     console.log("category clicked, setting Id to:", categoryName, typeof categoryName)
 
@@ -122,7 +122,7 @@ const Menu = () => {
                 <span>{category.name}</span>
 
               </button>
-              // use the item.id for the key, assuming django provides an 'id' field
+              
             )
           })}
         </div>

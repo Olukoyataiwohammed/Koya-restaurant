@@ -48,7 +48,7 @@ export default function Orders() {
           <p>Status: {order.status}</p>
           <p>Name: {order.customer_name}</p>
           <p>Phone: {order.customer_phone}</p>
-          <p>Delivery address: {order.address || "N/A"}</p>
+          <p>Delivery address: {order.delivery_address || "N/A"}</p>
           <p>Total: ₦{order.total_price?.toFixed(2) || "0.00"}</p>
           <p>Payment Status: {order.payment?.status || "N/A"}</p>
 

@@ -1,172 +1,59 @@
-export default function CheckoutForm({
-  addresses = [],
-  form,
-  setForm,
-  useNewAddress,
-  setUseNewAddress,
-  newAddress,
-  setNewAddress,
-}) {
+export default function CheckoutForm({ form, setForm, isGuest }) {
   return (
     <div>
-      <h3>Delivery Address</h3>
-
-      {/* Saved addresses */}
-      {addresses.length > 0 && !useNewAddress && (
-        <>
-          <select
-            value={form.address_id || ""}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, address_id: e.target.value }))
-            }
-          >
-            <option value="">Select Address</option>
-            {addresses.map((addr) => (
-              <option key={addr.id} value={addr.id}>
-                {addr.full_name} - {addr.city}, {addr.state}
-              </option>
-            ))}
-          </select>
-
-          <br />
-          <button
-            style={{ marginTop: "10px" }}
-            onClick={() => setUseNewAddress(true)}
-          >
-            Enter New Address
-          </button>
-        </>
-      )}
-
-      {/* New address form */}
-      {(useNewAddress || addresses.length === 0) && (
-        <div style={{ marginTop: "15px" }}>
-          
-          <input
-            placeholder="Full Name"
-            value={newAddress.full_name || ""}
-            onChange={(e) => {
-              setNewAddress((prev) => ({
-                ...prev,
-                full_name: e.target.value,
-              }));
-              setUseNewAddress(true);
-            }}
-          />
-
-          <input
-            placeholder="Phone"
-            value={newAddress.phone || ""}
-            onChange={(e) => {
-              setNewAddress((prev) => ({
-                ...prev,
-                phone: e.target.value,
-              }));
-              setUseNewAddress(true);
-            }}
-          />
-
-          <input
-            placeholder="Address Line"
-            value={newAddress.address_line || ""}
-            onChange={(e) => {
-              setNewAddress((prev) => ({
-                ...prev,
-                address_line: e.target.value,
-              }));
-              setUseNewAddress(true);
-            }}
-          />
-
-          <input
-            placeholder="City"
-            value={newAddress.city || ""}
-            onChange={(e) => {
-              setNewAddress((prev) => ({
-                ...prev,
-                city: e.target.value,
-              }));
-              setUseNewAddress(true);
-            }}
-          />
-
-          <input
-            placeholder="State"
-            value={newAddress.state || ""}
-            onChange={(e) => {
-              setNewAddress((prev) => ({
-                ...prev,
-                state: e.target.value,
-              }));
-              setUseNewAddress(true);
-            }}
-          />
-
-          <input
-            placeholder="Country"
-            value={newAddress.country || ""}
-            onChange={(e) => {
-              setNewAddress((prev) => ({
-                ...prev,
-                country: e.target.value,
-              }));
-              setUseNewAddress(true);
-            }}
-          />
-
-          <input
-            placeholder="Postal Code"
-            value={newAddress.postal_code || ""}
-            onChange={(e) => {
-              setNewAddress((prev) => ({
-                ...prev,
-                postal_code: e.target.value,
-              }));
-              setUseNewAddress(true);
-            }}
-          />
-
-          <label style={{ display: "block", marginTop: "10px" }}>
-            <input
-              type="checkbox"
-              checked={newAddress.is_default || false}
-              onChange={(e) => {
-                setNewAddress((prev) => ({
-                  ...prev,
-                  is_default: e.target.checked,
-                }));
-                setUseNewAddress(true);
-              }}
-            />
-            Set as default address
-          </label>
-
-          {addresses.length > 0 && (
-            <button
-              style={{ marginTop: "10px" }}
-              onClick={() => setUseNewAddress(false)}
-            >
-              Use Saved Address
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* Payment method */}
-      <h3 style={{ marginTop: "25px" }}>Payment Method</h3>
-      <select
-        value={form.payment_method || "CARD"}
+      <input
+        type="text"
+        placeholder="Full name"
+        value={form.customer_name}
         onChange={(e) =>
-          setForm((prev) => ({
-            ...prev,
-            payment_method: e.target.value,
-          }))
+          setForm({ ...form, customer_name: e.target.value })
+        }
+      />
+
+      <input
+        type="text"
+        placeholder="Phone number"
+        value={form.customer_phone}
+        onChange={(e) =>
+          setForm({ ...form, customer_phone: e.target.value })
+        }
+      />
+
+      <select
+        value={form.delivery_method}
+        onChange={(e) =>
+          setForm({ ...form, delivery_method: e.target.value })
         }
       >
-        <option value="CARD">Card</option>
-        <option value="CASH">Cash on Delivery</option>
-        <option value="BANK">Bank Transfer</option>
+        <option value="DELIVERY">Delivery</option>
+        <option value="PICKUP">Pickup</option>
       </select>
+
+      {form.delivery_method === "DELIVERY" && (
+        <textarea
+          placeholder="Delivery address"
+          value={form.delivery_address}
+          onChange={(e) =>
+            setForm({ ...form, delivery_address: e.target.value })
+          }
+        />
+      )}
+
+      <div style={{ marginTop: "1rem" }}>
+        <label htmlFor="payment_method">Payment Method:</label>
+        <select
+          id="payment_method"
+          value={form.payment_method}
+          onChange={(e) =>
+            setForm({ ...form, payment_method: e.target.value })
+          }
+        >
+          <option value="CARD">Card</option>
+          <option value="CASH">Cash</option>
+          <option value="PAYPAL">PayPal</option>
+          <option value="BANK">Bank Transfer</option>
+        </select>
+      </div>
     </div>
   );
 }

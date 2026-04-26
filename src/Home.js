@@ -10,6 +10,7 @@ import dinningTable from "./assets/restaurantDining.webp"
 
 
 
+
 const Home = () => {
   const images = [homePageImageOne,homePageImageTwo,homePageImageThree,homePageImageFour];
   

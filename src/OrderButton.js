@@ -1,54 +1,106 @@
-export default function OrderButton({ form, newAddress, useNewAddress, token }) {
-  const handlePlaceOrder = async () => {
+import { useState } from "react";
+import { useCart } from "./CartContext";
+import { useNavigate } from "react-router-dom";
+import usePaystack from "./UsePayStack";
 
-    const payload = useNewAddress
-      ? {
-          payment_method: form.payment_method,
-          full_name: newAddress.full_name,
-          phone: newAddress.phone,
-          address_line: newAddress.address_line,
-          city: newAddress.city,
-          state: newAddress.state,
-          country: newAddress.country,
-          postal_code: newAddress.postal_code,
-          is_default: newAddress.is_default,
-        }
-      : {
-          payment_method: form.payment_method,
-          address_id: form.address_id,
-        };
+
+export default function OrderButton({ form }) {
+  usePaystack();
+  
+  const { cart, placeOrder, clearCart } = useCart();
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
+
+  const handleOrder = async () => {
+    if (loading) return;
+
+    
+    if (!form.customer_name || !form.customer_phone) {
+      alert("Name and phone are required");
+      return;
+    }
+
+    if (form.delivery_method === "DELIVERY" && !form.delivery_address) {
+      alert("Delivery address is required");
+      return;
+    }
+
+    if (!cart.items || cart.items.length === 0) {
+      alert("Your cart is empty");
+      return;
+    }
+
+    setLoading(true);
+    setStatus(null);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/order/create/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${token}`,
-        },
-        body: JSON.stringify(payload),
+      // create order
+      const orderResponse = await placeOrder({
+        ...form,
+        payment_method: form.payment_method,
       });
 
-      const data = await res.json();
+      if (!orderResponse.success) {
+        throw new Error(orderResponse.message);
+      }
 
-      console.log("Order response:", data);
+      const order = orderResponse.order;
 
-      // ✅ IMPORTANT CHECK
-      if (!res.ok) {
-        alert(data.error || "Order failed");
+      // 2.. CASH / COD → finish immediately
+      if (form.payment_method === "CASH" || form.payment_method === "COD") {
+        clearCart();
+        navigate("/orders", { state: { orderId: order.id } });
         return;
       }
 
-      alert("Order placed successfully!");
+      // 3️⃣ CARD → Open Paystack popup
+      if (form.payment_method === "CARD") {
+        setLoading(false);
 
-    } catch (err) {
-      console.error(err);
-      alert("Network error while placing order");
+        const handler = window.PaystackPop.setup({
+          key: "pk_test_0c95805407498620ce8b9d51b011b604570938e4", //  replace with your Paystack PUBLIC key
+          email: "customer@koyadishes.com", // later: real customer email
+          amount: order.total_price * 100, // Paystack uses kobo
+          currency: "NGN",
+          reference: `ORDER_${order.id}_${Date.now()}`,
+
+          callback: function (response) {
+            // ✅ Payment successful
+            setStatus("Payment successful");
+
+            // TODO: send reference to backend for verification
+            // fetch("/orders/payments/webhook/", { ... })
+
+            clearCart();
+            navigate("/orders", { state: { orderId: order.id } });
+          },
+
+          onClose: function () {
+            setStatus("Payment cancelled");
+          },
+        });
+
+        handler.openIframe();
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("Error: " + error.message);
+    } finally {
+      setLoading(false);
     }
+    
+
   };
 
   return (
-    <button onClick={handlePlaceOrder} style={{ marginTop: "20px" }}>
-      Place Order
-    </button>
+    <div>
+      <button onClick={handleOrder} disabled={loading}>
+        {loading ? "Processing..." : "Place Order"}
+      </button>
+
+      {status && <p>Status: {status}</p>}
+    </div>
   );
 }

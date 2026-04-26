@@ -120,7 +120,7 @@ export const CartProvider = ({ children }) => {
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       };
 
-      const res = await fetch(`${API_BASE_URL}/order/create/`, {
+      const res = await fetch(`${API_BASE_URL}/orders/create/`, {
         method: "POST",
         headers,
         credentials: "include",
