@@ -32,7 +32,7 @@ const CreateReservation = () => {
 
         try {
 
-            const response = await fetch(`${process.env.REACT_APP_API_URL}reservation/reservations/`, 
+            const response = await fetch(`${process.env.REACT_APP_API_URL}reservation/`, 
                 {
                     method: "POST",
                     headers: {
