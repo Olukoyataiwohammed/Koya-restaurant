@@ -9,7 +9,7 @@ body{
     margin: 0;
     background-color: white;
     display: flex;
-    gap: 120px;
+    gap: 70px;
     color: rgb(205, 121, 121);
     border: solid thick black;
     height: 50px;
@@ -133,3 +133,24 @@ a{
     margin-top: 200px;
     margin-left: 90px;
 }
+
+@media only screen and (max-width:1440px){
+  
+}
+
+@media only screen and (max-width:1024px){
+  
+}
+
+@media only screen and (max-width:768px){
+  
+}
+
+@media only screen and (max-width:480px){
+  
+}
+
+
+
+
+

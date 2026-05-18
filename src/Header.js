@@ -11,7 +11,7 @@ const Header = () => {
             color: isActive? "black": " ",
             backgroundColor: isActive?" " : " ",
             fontStyle: "italic",
-            fontSize: "30px",
+            fontSize: "27px",
             //width: isActive? "300px" : " ",
             textAlign: isActive ? "center" : " "
         })
@@ -22,6 +22,7 @@ const Header = () => {
     <header id='Header'>
         <NavLink className='head head1' style={navLinkDisplay} to='/'>Home</NavLink>
         <NavLink className='head1' style={navLinkDisplay} to='/menu'>Menu</NavLink>
+        <NavLink className='head1' style={navLinkDisplay} to='/reservation'>Booking Reservation </NavLink>
         <NavLink className='head1' style={navLinkDisplay} to='/deals'>Deals</NavLink>
         <NavLink className='head1' style={navLinkDisplay} to='/about_us'>About Us</NavLink>
         <NavLink className='head1' style={navLinkDisplay} to='/orderonline'>Order Online</NavLink>

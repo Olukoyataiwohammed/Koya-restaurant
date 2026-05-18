@@ -15,6 +15,7 @@ import Navbar from './Navbar'
 import Login from './Login'
 import CheckoutPage from "./CheckoutPage";
 import Signup from './Signup'
+import CreateReservation from './CreateReservation'
 import { CartProvider } from './CartContext'
  
 const Links = () => {
@@ -35,6 +36,7 @@ const Links = () => {
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route  element={<PrivateRoute/>}/>
+            <Route path='/reservation' element={<CreateReservation/>}/>
         </Routes>
         <Navbar/>
         <Footer/>
