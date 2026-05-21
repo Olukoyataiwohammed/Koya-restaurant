@@ -21,11 +21,15 @@ import { CartProvider } from './CartContext'
 const Links = () => {
   return (
     <BrowserRouter>
+    <div className='app-container'>
     <AuthProvider>
       <CartProvider>
-        <Navs/>
-        <Header/>
-        <Routes> 
+        <div className='fixed-ui'>
+          <Navs className="nav"/>
+          <Header className="header"/>
+        </div>
+        <main className="page-content" >
+          <Routes> 
             <Route path='/' element={<Home/>}/>
             <Route path='/menu' element={<Menu/>}/>
             <Route path='/account' element={<Account/>}/>
@@ -37,11 +41,15 @@ const Links = () => {
             <Route path='/signup' element={<Signup/>}/>
             <Route  element={<PrivateRoute/>}/>
             <Route path='/reservation' element={<CreateReservation/>}/>
-        </Routes>
+          </Routes>
+        </main>
+        
+        
         <Navbar/>
         <Footer/>
       </CartProvider>
     </AuthProvider>
+    </div>
     </BrowserRouter>
   )
 };

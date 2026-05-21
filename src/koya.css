@@ -2,6 +2,44 @@ body{
     background-color: black;
     color: gold;
 }
+.fixed-ui {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: white;
+}
+.header {
+  position: sticky;
+  
+  z-index: 2050;
+}
+
+.nav {
+  position: sticky;
+  
+  z-index: 2000;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+/* Page content grows to fill available space */
+.page-content {
+  flex: 1;
+  padding: 0rem; /* optional padding */
+}
+
+/* Fixed header/nav/animination styling */
+
+/* Footer styling */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
 #Header{
     display: flex;
     justify-content: space-around;
@@ -12,6 +50,7 @@ body{
     gap: 70px;
     color: rgb(205, 121, 121);
     border: solid thick black;
+    align-content: center;
     height: 50px;
 }
 .head{
@@ -24,14 +63,30 @@ body{
 a{
     text-decoration: none;
 }
-#mainHome p{
+#mainHome .firstRoleHome p{
+    
     margin-left: 10px;
     font-size: 90px;
     color: white;
 }
 #mainHome .firstRoleHome {
+    
     display: flex;
     gap: 10px;
+}
+.firstRoleHome_two{
+    display: none;
+}
+#mainHome .firstRoleHome_two img{
+    
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-size: cover;
+    border: double thick silver;
+}
+#mainHome{
+    background-color: black;
 }
 
 #mainHome .firstRoleHome img{
@@ -135,22 +190,333 @@ a{
 }
 
 @media only screen and (max-width:1440px){
+    
   
 }
 
 @media only screen and (max-width:1024px){
   
+     #Header{
+        padding: 0px !important;
+        margin: 0px !important;
+        display: flex;
+        gap: 0px !important;
+        justify-content: space-between !important;
+        
+    }
+    .head{
+        margin-left: 0px;
+    }
+    .head1{
+        font-size: 24px !important;
+    }
+    #homePageImage{
+        background-image: url(./assets/restaurantSuyas.jpg);
+        height: 350px !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: 20px;
+        border: solid thin black;
+    }
+    #mainHome #homePageImage #pageRole{
+        font-size: 40px;
+        margin-top: 50px;
+        
+    }
+    #mainHome .dinningTable{
+        padding: 0px !important;
+        width: 970px;
+        height: 500px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: cover;
+        margin-top: 20px;
+        border: solid thin black;
+    }
+    #mainHome p .dinningTable{
+        margin-top: 20px;
+        margin-left: 30px;
+    }
+    #mainApp{
+        width: 750px;
+        height: 280px;
+        border: solid thick white;
+        text-align: center;
+        margin: 100px 100px 200px 100px;
+        margin-left: 140px;
+        background-color: rgb(50, 47, 47);
+        font-size: 18px;
+    }
+    #mainApp .account_restaurant_logo{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (max-width:768px){
-  
+   .firstRoleHome{
+        padding: 0px !important;
+        margin: 0px !important;
+        display: none !important;
+        
+    }
+    .firstRoleHome_two{
+        font-size: 40px;
+        display: flex;
+        color: white;
+    }
+    #mainHome .firstRoleHome_two img{
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        background-size: cover;
+        border: double thick silver;
+    }
+
+    .firstRoleHome p b i{
+        padding: 0px !important;
+        margin: 0px !important;
+        font-size: 30px;
+        align-content: start !important;
+        text-align: start !important;
+        margin-left: 0px;
+    }
+    .firstRoleHome img{
+        width: 100px !important;
+        height: 80px !important;
+        margin-top : 0px !important;
+        
+    }
+    #Header{
+        padding: 0px !important;
+        margin: 0px !important;
+        display: flex;
+        gap: 0px !important;
+        justify-content: space-between !important;
+        height: 35px;
+    }
+    .head{
+        margin-left: 0px;
+    }
+    .head1{
+        font-size: 19px !important;
+    }
+    #homePageImage{
+        background-image: url(./assets/restaurantSuyas.jpg);
+        height: 200px !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: 10px;
+        border: solid thin black;
+    }
+    #mainHome #homePageImage #pageRole{
+        font-size: 20px;
+        margin-top: 50px;
+        
+    }
+    #mainHome .dinningTable{
+        padding: 0px !important;
+        width: 700px;
+        height: 300px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: cover;
+        margin-top: 0px;
+        border: solid thin black;
+    }
+    #mainHome p .dinningTable{
+        margin-top: 20px;
+        margin-left: 30px;
+    }
+    #mainApp{
+        width: 550px;
+        height: 280px;
+        border: solid thick white;
+        text-align: center;
+        margin: 100px 100px 200px 100px;
+        margin-left: 100px;
+        background-color: rgb(50, 47, 47);
+        font-size: 18px;
+    }
+    #mainApp .account_restaurant_logo{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (max-width:480px){
-  
+    .firstRoleHome{
+        padding: 0px !important;
+        margin: 0px !important;
+        display: none !important;
+        
+    }
+    .firstRoleHome_two{
+        font-size: 19px !important;
+        display: flex;
+        color: white;
+    }
+    #mainHome .firstRoleHome_two img{
+    margin-top: 0px;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50px;
+    background-size: cover;
+    border: double thick silver;
+}
+
+    .firstRoleHome p b i{
+        padding: 0px !important;
+        margin: 0px !important;
+        font-size: 30px;
+        align-content: start !important;
+        text-align: start !important;
+        margin-left: 0px;
+    }
+    .firstRoleHome img{
+        width: 100px !important;
+        height: 80px !important;
+        margin-top : 0px !important;
+        
+    }
+    #Header{
+        padding: 0px !important;
+        margin: 0px !important;
+        display: flex;
+        gap: 0px !important;
+        justify-content: space-between !important;
+        height: 25px;
+    }
+    .head{
+        margin-left: 0px;
+    }
+    .head1{
+        font-size: 9px !important;
+    }
+    #homePageImage{
+        background-image: url(./assets/restaurantSuyas.jpg);
+        height: 200px !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: 10px;
+        border: solid thin black;
+    }
+    #mainHome #homePageImage #pageRole{
+        font-size: 20px;
+        margin-top: 50px;
+        
+    }
+    #mainHome .dinningTable{
+        padding: 0px !important;
+        width: 400px;
+        height: 300px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: cover;
+        margin-top: 0px;
+        border: solid thin black;
+    }
+    #mainHome p .dinningTable{
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+    #mainApp{
+        width: 370px;
+        height: 250px;
+        border: solid thick white;
+        text-align: center;
+        margin: 100px 100px 200px 100px;
+        margin-left: 26px;
+        background-color: rgb(50, 47, 47);
+        font-size: 14px;
+    }
+    #mainApp .account_restaurant_logo{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+@media only screen and (max-width:376px){
+  #mainHome .dinningTable{
+        padding: 0px !important;
+        width: 340px ;
+        height: 300px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: cover;
+        margin-top: 0px;
+        border: solid thin black;
+    }
+    #mainHome p .dinningTable{
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    #mainApp{
+        width: 340px;
+        height: 220px;
+        border: solid thick white;
+        text-align: center;
+        margin: 100px 100px 200px 100px;
+        margin-left: 20px;
+        background-color: rgb(50, 47, 47);
+        font-size: 12px;
+    }
+    #mainApp .account_restaurant_logo{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+@media only screen and (max-width:320px){
+  #mainHome .dinningTable{
+        padding: 0px !important;
+        width: 300px;
+        height: 300px !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: cover;
+        margin-top: 0px;
+        border: solid thin black;
+    }
+    #mainHome p .dinningTable{
+        margin-top: 20px;
+        margin-left: 10px !important;
+    }
+    #mainApp{
+        width: 300px;
+        height: 200px;
+        border: solid thick white;
+        text-align: center;
+        margin: 100px 100px 200px 100px;
+        margin-left: 10px;
+        background-color: rgb(50, 47, 47);
+        font-size: 10px;
+    }
+    #mainApp .account_restaurant_logo{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 
 
 
 
+ 

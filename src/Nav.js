@@ -8,7 +8,10 @@ const Navs = () => {
         <div className='firstRoleHome'>
                 <p><b><i>KO<span style={{color:"red"}}>Y</span>A_<span style={{color:"red"}}>DISHES</span></i></b></p>
                 <img src={firstImage} alt='' />
-         </div>   
+         </div> 
+         <div className='firstRoleHome_two'><i>KO<span style={{color:"red"}}>Y</span>A_<span style={{color:"red"}}>DISHES</span></i>
+            <img src={firstImage} alt='' />
+         </div>  
     </div>
   )
 }
