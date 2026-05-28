@@ -16,7 +16,9 @@ import Login from './Login'
 import CheckoutPage from "./CheckoutPage";
 import Signup from './Signup'
 import CreateReservation from './CreateReservation'
+import AboutUs from './AboutUs'
 import { CartProvider } from './CartContext'
+
  
 const Links = () => {
   return (
@@ -36,6 +38,7 @@ const Links = () => {
             <Route path='/deals' element={<Deals/>}/>
             <Route path='/orderonline' element={<OrderOnline/>}/>
             <Route path='/cart' element={<Cart/>}/>
+            <Route path='/about_us' element={<AboutUs/>}/>
             <Route path="/checkout" element={<CheckoutPage/>} />
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>

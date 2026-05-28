@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from './AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
+import "./koya.css"
 
 
 const Navbar = () => {
@@ -15,8 +16,8 @@ const Navbar = () => {
         navigate('/');
     };
   return (
-    <nav>
-        <Link to='/'>Home</Link>
+    <nav className='main_nav_bar'>
+        <Link to='/' className='nav_bar' >Home</Link>
         {isAuthenticated ? (
             <>
                 <Link to="/menu">Menu</Link>
@@ -26,7 +27,7 @@ const Navbar = () => {
             </>
         ) :(
             <>
-                <Link to="/account">Account</Link>
+                <Link to="/account" className='nav_bar' >Account</Link>
                 
             </>
         )}

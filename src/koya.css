@@ -188,6 +188,13 @@ a{
     margin-top: 200px;
     margin-left: 90px;
 }
+.main_nav_bar{
+    display:flex;
+    gap: 20px;
+}
+.nav_bar{
+    color : white;
+}
 
 @media only screen and (max-width:1440px){
     
@@ -254,6 +261,54 @@ a{
         gap: 5px;
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    #restaurant_menu_container #category_display{
+        background-color: black !important;
+    }
+    #restaurant_menu_container #category_display button{
+        width: 250px;
+        height: 140px;
+        border: none;
+        margin-left: 5px;
+        margin-top: 20px;
+        border: solid thin green;
+    }
+
+    #restaurant_menu_container #category_display button img{
+        width: 200px;
+        height: 100px;
+    }
+
+    #restaurant_menu_container #display_items{
+        margin-top: 10px;
+        width: 100px;
+        background-color: black;
+        border: solid thin black;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(3, 1fr);
+        margin-left: 30px;
+    }
+    .menu_item_card{
+        width: 300px;
+        height: 180px;
+        border: solid thick white;
+        display: flex;
+        gap: 10px;
+        background-color: black;
+    }
+
+    .menu_item_card img{
+        margin-left:3px;
+        width: 170px;
+        height: 100px;
+    }
+    .menu_item_card .menu_item_title{
+        font-size: 16px;
+    }
+    .menu_item_card .menu_item_details{
+        margin-top: 0px;
+        font-size: 13px;
     }
 }
 
@@ -332,7 +387,7 @@ a{
     }
     #mainHome p .dinningTable{
         margin-top: 20px;
-        margin-left: 0px;
+        margin-left: 14px;
     }
     #mainApp{
         width: 550px;
@@ -350,6 +405,54 @@ a{
         gap: 5px;
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    #restaurant_menu_container #category_display{
+        background-color: black !important;
+    }
+    #restaurant_menu_container #category_display button{
+        width: 250px;
+        height: 140px;
+        border: none;
+        margin-left: 5px;
+        margin-top: 20px;
+        border: solid thin green;
+    }
+
+    #restaurant_menu_container #category_display button img{
+        width: 200px;
+        height: 100px;
+    }
+
+    #restaurant_menu_container #display_items{
+        margin-top: 10px;
+        width: 100px;
+        background-color: black;
+        border: solid thin black;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 30px;
+    }
+    .menu_item_card{
+        width: 300px;
+        height: 160px;
+        border: solid thick white;
+        display: flex;
+        gap: 10px;
+        background-color: black;
+    }
+
+    .menu_item_card img{
+        margin-left:3px;
+        width: 170px;
+        height: 100px;
+    }
+    .menu_item_card .menu_item_title{
+        font-size: 14px;
+    }
+    .menu_item_card .menu_item_details{
+        margin-top: 0px;
+        font-size: 11px;
     }
 }
 
@@ -447,6 +550,54 @@ a{
         margin-top: 20px;
         margin-bottom: 20px;
     }
+    #restaurant_menu_container #category_display{
+        background-color: black !important;
+    }
+    #restaurant_menu_container #category_display button{
+        width: 130px;
+        height: 90px;
+        border: none;
+        margin-left: 5px;
+        margin-top: 20px;
+        border: solid thin green;
+    }
+
+    #restaurant_menu_container #category_display button img{
+        width: 90px;
+        height: 60px;
+    }
+
+    #restaurant_menu_container #display_items{
+        margin-top: 10px;
+        width: 100px;
+        background-color: black;
+        border: solid thin black;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 10px;
+    }
+    .menu_item_card{
+        width: 195px;
+        height: 130px;
+        border: solid thick white;
+        display: flex;
+        gap: 10px;
+        background-color: black;
+    }
+
+    .menu_item_card img{
+        
+        width: 90px;
+        height: 70px;
+    }
+    .menu_item_card .menu_item_title{
+        font-size: 11px;
+    }
+    .menu_item_card .menu_item_details{
+        margin-top: 0px;
+        font-size: 9px;
+    }
 }
 @media only screen and (max-width:376px){
   #mainHome .dinningTable{
@@ -461,7 +612,7 @@ a{
     }
     #mainHome p .dinningTable{
         margin-top: 20px;
-        margin-left: 0px;
+        margin-left: 10px;
     }
     #mainApp{
         width: 340px;
@@ -479,6 +630,54 @@ a{
         gap: 5px;
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    #restaurant_menu_container #category_display{
+        background-color: black !important;
+    }
+    #restaurant_menu_container #category_display button{
+        width: 118px;
+        height: 90px;
+        border: none;
+        margin-left: 5px;
+        margin-top: 20px;
+        border: solid thin green;
+    }
+
+    #restaurant_menu_container #category_display button img{
+        width: 90px;
+        height: 60px;
+    }
+
+    #restaurant_menu_container #display_items{
+        margin-top: 10px;
+        width: 0px;
+        background-color: black;
+        border: solid thin gold;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 0px;
+    }
+    .menu_item_card{
+        width: 180px;
+        height: 130px;
+        border: solid thick white;
+        display: flex;
+        gap: 10px;
+        background-color: black;
+    }
+
+    .menu_item_card img{
+        
+        width: 60px;
+        height: 70px;
+    }
+    .menu_item_card .menu_item_title{
+        font-size: 10px;
+    }
+    .menu_item_card .menu_item_details{
+        margin-top: 0px;
+        font-size: 10px;
     }
 }
 @media only screen and (max-width:320px){
@@ -512,6 +711,54 @@ a{
         gap: 5px;
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    #restaurant_menu_container #category_display{
+        background-color: black !important;
+    }
+    #restaurant_menu_container #category_display button{
+        width: 100px;
+        height: 90px;
+        border: none;
+        margin-left: 5px;
+        margin-top: 20px;
+        border: solid thin green;
+    }
+
+    #restaurant_menu_container #category_display button img{
+        width: 70px;
+        height: 60px;
+    }
+
+    #restaurant_menu_container #display_items{
+        margin-top: 10px;
+        width: 100px;
+        background-color: black;
+        border: solid thin black;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 0px;
+    }
+    .menu_item_card{
+        width: 150px;
+        height: 130px;
+        border: solid thick white;
+        display: flex;
+        gap: 10px;
+        background-color: black;
+    }
+
+    .menu_item_card img{
+        
+        width: 50px;
+        height: 70px;
+    }
+    .menu_item_card .menu_item_title{
+        font-size: 9px;
+    }
+    .menu_item_card .menu_item_details{
+        margin-top: 0px;
+        font-size: 9px;
     }
 }
 
